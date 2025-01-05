@@ -1,0 +1,54 @@
+.numeric-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.numeric-page-tile {
+    font-size: 30px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.numeric-page-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 105px;
+}
+
+.numeric-page-no-description {
+    margin-bottom: 170px;
+}
+
+.numeric-page-input-container {
+    position: relative;
+    width: 100vw; /* Полная ширина экрана */
+    margin-left: -20px; /* Отрицательный отступ, чтобы убрать боковые границы */
+    margin-right: -20px; /* Отрицательный отступ, чтобы убрать боковые границы */
+}
+
+.numeric-page-input {
+    width: 100%;
+    padding: 15px 45px 15px 15px; /* Отступ для иконки и текста */
+    font-size: 34px;
+    font-weight: bolder;
+    border: none; /* Убираем границу */
+    border-radius: 0; /* Убираем скругления */
+    box-sizing: border-box; /* Учитываем padding при расчете ширины */
+    background-color: #f5f5f5; /* Можно задать цвет фона для поля */
+}
+
+.numeric-page-input:focus {
+    outline: none;
+} 
+
+.numeric-page-currency {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 50px;
+    pointer-events: none;
+}

@@ -1,0 +1,30 @@
+/* Общий контейнер */
+.room-created {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px; /* Отступы для мобильного */
+}
+
+/* Контейнер для QR-кода */
+.room-created__qrcode {
+    margin-bottom: 15px; /* Отступ между QR-кодом и описанием */
+}
+
+/* Описание под QR-кодом */
+.room-created__description {
+    font-size: 14px; /* Меньший шрифт */
+    color: #555;
+    max-width: 250px;
+}
+
+/* Код комнаты */
+.room-created__code {
+    font-size: 18px; /* Больший шрифт для кода */
+}
+
+.room-created__code span {
+    font-weight: bold;
+    font-size: 20px; /* Немного больше для выделения кода */
+}

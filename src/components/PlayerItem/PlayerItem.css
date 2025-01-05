@@ -1,0 +1,55 @@
+.player-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 0 21px;
+    height: 84px;
+    width: calc(100% - 34px);
+    max-width: 400px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.player-profile {
+    display: flex;
+    align-items: center;
+}
+
+.player-character {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.player-character-item-image {
+    margin-left: 13px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #007BFF;
+    object-fit: cover;
+}
+
+.bank-character-item-image-container {
+    margin-left: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #007BFF;
+    border-radius: 50%;
+}
+
+.bank-character-item-image {
+    margin-bottom: 3px;
+    width: 77%;
+    height: 77%;
+    object-fit: contain;
+}
+
+.player-item.selected {
+    background-color: #e6f0ff;
+    box-shadow: inset 0 0 0 3px #007AFF;
+}

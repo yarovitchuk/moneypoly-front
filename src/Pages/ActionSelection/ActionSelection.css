@@ -1,0 +1,48 @@
+/* ActionSelection.css */
+.action-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.action-selection__title {
+    font-size: 30px;
+    margin-top: 60px; /* Отступ от шапки */
+    margin-bottom: 17px;
+}
+
+.action-selection__description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 100px;
+}
+
+.action-selection__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px; /* Расстояние между кнопками */
+    width: 100%;
+}
+
+.action-selection__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px;
+    background-color: #007AFF;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border: none;
+    border-radius: 18px;
+    width: calc(100% - 34px); /* Учитываем отступы по бокам 17px */
+    max-width: 400px;
+}
+
+.action-selection__icon {
+    width: 24px;
+    height: 24px;
+}

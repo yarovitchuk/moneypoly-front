@@ -1,0 +1,19 @@
+.balance {
+    background-color: #007AFF;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 24px;
+    padding: 2px 8px 2px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.balance-currency {
+    margin-left: 6px;
+}
+
+.balance-infinity {
+    margin-top: 1px;
+}

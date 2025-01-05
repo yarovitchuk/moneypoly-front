@@ -1,0 +1,23 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px; /* Отступ между элементами списка */
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 19px;
+}
+
+.divider {
+    /* left: 0; */
+    width: 100vw; /* Растягиваем на всю ширину окна браузера */
+    margin: 0; 
+    /* Занимает всю ширину родительского контейнера */
+    height: 2px;
+    /* Толщина линии */
+    padding: 0;
+    background-color: #E1DFE0;
+    /* Цвет разделительной линии */
+    /* margin: 10px 0; */
+    /* Отступы сверху и снизу */
+}

@@ -1,0 +1,83 @@
+.banker-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* Отступ между элементами списка */
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 19px;
+}
+
+.vertical-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 268px;
+    /* Ширина всего тоггла */
+    background-color: #FFFFFF;
+    /* Синий фон тоггла */
+    border-radius: 30px;
+    /* Скругленные углы */
+    height: 37px;
+    position: relative;
+    box-sizing: border-box;
+    user-select: none;
+    z-index: 1;
+    /* Отключить выделение текста */
+}
+
+.toggle-button {
+    position: absolute;
+    width: 134px;
+    /* Ширина кнопки чуть меньше половины тоггла */
+    height: 37px;
+    background-color: #FFFFFF;
+    /* Основной цвет кнопки */
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-button.left {
+    transform: translateX(-67px);
+    /* Сдвигаем влево для состояния "Из кошелька" */
+    background-color: #007AFF;
+    color: #FFFFFF;
+}
+
+.toggle-button.right {
+    transform: translateX(67px);
+    /* Сдвигаем вправо для состояния "Из банка" */
+    background-color: #007AFF;
+    color: #FFFFFF;
+}
+
+.toggle-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    width: 268px;
+}
+
+.toggle-labels span {
+    flex: 1;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.divider {
+    /* left: 0; */
+    width: 100vw; /* Растягиваем на всю ширину окна браузера */
+    margin: 0; 
+    /* Занимает всю ширину родительского контейнера */
+    height: 2px;
+    /* Толщина линии */
+    padding: 0;
+    background-color: #E1DFE0;
+    /* Цвет разделительной линии */
+    /* margin: 10px 0; */
+    /* Отступы сверху и снизу */
+}

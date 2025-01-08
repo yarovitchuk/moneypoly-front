@@ -55,7 +55,7 @@ export const scanOnClick = (onScan: (data: string) => void) => () => {
 
 export const exit = () => Telegram.WebApp.close()
 
-export const generateQrCode = (roomId: number) => `https://t.me/moneypoly_bot/money?startapp=${roomId}`
+export const generateQrCode = (roomId: number) => `https://t.me/moneypoly_bot?startapp=${roomId}`
 
 export const parseRoomIdFromUrl = (url: string): string => {
     const parsedUrl = new URL(url);

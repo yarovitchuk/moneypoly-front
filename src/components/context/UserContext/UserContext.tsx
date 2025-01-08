@@ -46,10 +46,13 @@ export const UserContextProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const [isConnected, setIsConnected] = useState(false);
     const [isStarted, setIsStared] = useState(false)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const authMutation = useMutation({
-        mutationFn: (initData: string) => auth(initData),
-        onSuccess: () => setIsAuthenticated(true),
-        onError: () => setIsAuthenticated(false),
+    useQuery({
+        queryKey: ["auth"],
+        queryFn: () => auth(Telegram.WebApp.initData)
+            .then(() => setIsAuthenticated(true))
+            .catch(() => setIsAuthenticated(false)),
+        retry: 3,
+        retryDelay: 2000
     })
     const navigate = useNavigate()
     const { isLoading } = useQuery(
@@ -94,11 +97,11 @@ export const UserContextProvider: React.FC<{ children: React.ReactNode }> = ({ c
             setPlayers(players)
             navigate('/select-character')
         },
+        retry: false,
     })
 
     useEffect(() => {
         if (isStarted) return
-        authMutation.mutate(Telegram.WebApp.initData)
 
         const startedRoomId = Telegram.WebApp.initDataUnsafe.start_param
         if (!startedRoomId) {
@@ -114,39 +117,37 @@ export const UserContextProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 name: getProfileName()
             }
         })
-    }, [navigate, isStarted, addPlayerMutation, authMutation])
+    }, [isStarted])
 
-    useWebSocket(`/api/users/${userId}/ws`,
-        {
-            onMessage: (event) => {
-                const room = JSON.parse(event.data) as {
-                    roomId: number,
-                    adminId: number,
-                    players: {
-                        [key: number]: {
-                            id: number,
-                            name: string,
-                            balance: number,
-                            character: Character,
-                        }
+    useWebSocket(`/api/users/${userId}/ws`, {
+        onMessage: (event) => {
+            const room = JSON.parse(event.data) as {
+                roomId: number,
+                adminId: number,
+                players: {
+                    [key: number]: {
+                        id: number,
+                        name: string,
+                        balance: number,
+                        character: Character,
                     }
-                };
-                setPlayers(room.players);
-                setBalance(room.players[userId]?.balance || null);
-                const isNewBanker = room.adminId === getId() && !isBanker
-                if (isNewBanker) {
-                    setIsBanker(true)
-                    navigate('/banker-game')
                 }
-            },
-            onOpen: () => setIsConnected(true),
-            onClose: () => setIsConnected(false),
-            onError: () => setIsConnected(false),
-            shouldReconnect: () => true,
-            reconnectAttempts: 10,
-            reconnectInterval: 1000,
-        }
-    )
+            };
+            setPlayers(room.players);
+            setBalance(room.players[userId]?.balance || null);
+            const isNewBanker = room.adminId === getId() && !isBanker
+            if (isNewBanker) {
+                setIsBanker(true)
+                navigate('/banker-game')
+            }
+        },
+        onOpen: () => setIsConnected(true),
+        onClose: () => setIsConnected(false),
+        onError: () => setIsConnected(false),
+        shouldReconnect: () => true,
+        reconnectAttempts: 10,
+        reconnectInterval: 1000,
+    })
 
     const outRoom = () => {
         setBalance(null)
